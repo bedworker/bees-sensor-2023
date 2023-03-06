@@ -1,0 +1,4 @@
+
+MLX addr detected on I2C
+['0x80e', '0x292', '0x18a']
+Read 2 frames in 0.51 s
