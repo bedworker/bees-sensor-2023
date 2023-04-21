@@ -1,0 +1,10 @@
+axes.labelsize: 20
+axes.titlesize: 20
+text.color: ecf0f1 # clouds
+axes.titlecolor: ecf0f1
+axes.labelcolor: ecf0f1
+axes.facecolor: 34495e
+figure.facecolor: 34495e # wet asphalt
+xtick.color: ecf0f1
+ytick.color: ecf0f1
+font.family: monospace
