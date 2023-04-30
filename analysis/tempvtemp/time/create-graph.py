@@ -4,7 +4,8 @@ import numpy as np
 from datetime import datetime
 import pytz
 
-plt.style.use('/home/liam/Documents/bees-sensor-2023/analysis/style.mplstyle')
+plt.style.use('/home/liam/Documents/bees-sensor-2023/analysis/print.mplstyle')
+
 
 def to_time_of_day(column):
     out_column = np.empty_like(column)
@@ -32,16 +33,24 @@ data = data[data[:, 1] < 150] # filter out average temperatures of more than 150
 data[:, 0] = to_time_of_day(data[:, 0])
 norm = mpl.colors.Normalize(0, 86400)
 
-plt.scatter(data[:, 2], data[:, 1], s=0.05, c=data[:, 0], norm=norm)
+timestamps = data[:, 0]
+average_temp = data[:, 1]
+outside_temp =data[:, 2]
+
+plt.scatter(outside_temp, average_temp, s=0.05, c=timestamps, norm=norm, cmap="plasma")
 plt.xlabel("Outside Temperature (°C)")
 plt.ylabel("Average Camera Temperature (°C)")
+
+ax = plt.gca()
+ax.set_xlim(-15, 50)
+ax.set_ylim(-15, 50)
 
 cbar = plt.colorbar()
 cbar.set_label("Time of Day (seconds)")
 
 # change size of plot so it fits
 fig = plt.gcf()
-fig.set_size_inches(8,6)
+fig.set_size_inches(7,6)
 fig.set_dpi(150)
 
 plt.tight_layout()
